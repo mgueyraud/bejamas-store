@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { cookies } from "next/headers";
 import { getCart } from "@/lib/shopify";
 import { CartProvider } from "@/components/cart/CartContext";
+import { Toaster } from "sonner";
 
 const neueMontreal = localFont({
   src: [
@@ -52,6 +53,13 @@ export default async function RootLayout({
           <Header />
           {children}
         </CartProvider>
+        <Toaster
+          toastOptions={{
+            style: {
+              background: "var(--color-accent)",
+            },
+          }}
+        />
       </body>
     </html>
   );

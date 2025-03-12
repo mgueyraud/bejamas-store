@@ -3,6 +3,7 @@
 :root {
   --background: oklch(0.9644 0.0013 286.38);
   --foreground: black;
+  --color-accent: oklch(91.98% .1905 128.5);
 }
 
 @theme inline {

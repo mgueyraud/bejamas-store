@@ -6,13 +6,16 @@ import { Product, ProductVariant } from "@/types/shopify";
 import { useCart } from "./CartContext";
 import { addItem } from "./actions";
 import { useActionState } from "react";
+import { toast } from "sonner";
 
 function SubmitButton({
   availableForSale,
   selectedVariantId,
+  isPending = false,
 }: {
   availableForSale: boolean;
   selectedVariantId: string | undefined;
+  isPending?: boolean;
 }) {
   const buttonClasses =
     "cursor-pointer bg-accent text-black font-bold px-6 h-12 rounded-full ml-auto md:ml-0 md:w-fit";
@@ -22,6 +25,14 @@ function SubmitButton({
     return (
       <button disabled className={clsx(buttonClasses, disabledClasses)}>
         Out of Stock
+      </button>
+    );
+  }
+
+  if (isPending) {
+    return (
+      <button disabled className={clsx(buttonClasses, disabledClasses)}>
+        Adding...
       </button>
     );
   }
@@ -54,7 +65,7 @@ export function AddToCart({ product }: { product: Product }) {
   const { variants, availableForSale } = product;
   const { addCartItem } = useCart();
   const { state } = useProduct();
-  const [message, formAction] = useActionState(addItem, null);
+  const [message, formAction, isPending] = useActionState(addItem, null);
   const variant = variants.find((variant: ProductVariant) =>
     variant.selectedOptions.every(
       (option) => option.value === state[option.name.toLowerCase()]
@@ -71,11 +82,21 @@ export function AddToCart({ product }: { product: Product }) {
       action={async () => {
         addCartItem(finalVariant, product);
         await actionWithVariant();
+        console.log(finalVariant);
+        toast.success("Added to cart succesfully", {
+          description:
+            finalVariant.selectedOptions.length > 1
+              ? finalVariant.selectedOptions
+                  .map((option) => `${option.name}: ${option.value}`)
+                  .join(", ")
+              : "",
+        });
       }}
     >
       <SubmitButton
         availableForSale={availableForSale}
         selectedVariantId={selectedVariantId}
+        isPending={isPending}
       />
       <p className="sr-only" role="status" aria-label="polite">
         {message}
