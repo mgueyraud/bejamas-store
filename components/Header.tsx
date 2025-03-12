@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./icons/Logo";
-import CartModal from "./cart/CartModal";
+import CartButton from "./cart/CartButton";
 
 export default function Header() {
   return (
@@ -19,7 +19,7 @@ export default function Header() {
       <Link href="/" className="absolute left-1/2 -translate-x-1/2">
         <Logo height={30} />
       </Link>
-      <CartModal />
+      <CartButton />
     </header>
   );
 }
