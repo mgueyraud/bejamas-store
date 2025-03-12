@@ -1,8 +1,8 @@
-import { Connection, ShopifyProduct, ShopifyProductsOperation, Image, Product, ShopifyProductOperation, ShopifyCart, Cart, ShopifyAddToCartOperation, ShopifyCartOperation, ShopifyRemoveFromCartOperation, ShopifyUpdateCartOperation, ShopifyCreateCartOperation} from "@/types/shopify";
+import { Connection, ShopifyProduct, ShopifyProductsOperation, Image, Product, ShopifyProductOperation, ShopifyCart, Cart, ShopifyAddToCartOperation, ShopifyCartOperation, ShopifyRemoveFromCartOperation, ShopifyUpdateCartOperation, ShopifyCreateCartOperation, ShopifyProductRecommendationsOperation} from "@/types/shopify";
 import { HIDDEN_PRODUCT_TAG, SHOPIFY_GRAPHQL_API_ENDPOINT, TAGS } from "../constants";
 import { isShopifyError } from "../type-guard";
 import { ensureStartWith } from "../utils";
-import { getProductQuery, getProductsQuery } from "./queries/product";
+import { getProductQuery, getProductRecommendationsQuery, getProductsQuery } from "./queries/product";
 import { addToCartMutation, createCartMutation, editCartItemsMutation, getCartQuery, removeFromCartMutation } from "./queries/cart";
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
@@ -176,19 +176,19 @@ function removeEdgesAndNodes<T>(array: Connection<T>): T[] {
     return reshapeCart(res.body.data.cartLinesAdd.cart)
   }
   
-//   export async function getProductRecommendations(id: string): Promise<Product[]> {
-//     const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
-//       query: getProductRecommendationsQuery,
-//       tags: [TAGS.products],
-//       variables: {
-//         productId: id
-//       },
-//     });
+  export async function getProductRecommendations(id: string): Promise<Product[]> {
+    const res = await shopifyFetch<ShopifyProductRecommendationsOperation>({
+      query: getProductRecommendationsQuery,
+      tags: [TAGS.products],
+      variables: {
+        productId: id
+      },
+    });
   
-//     return reshapeProducts(
-//       res.body.data.productRecommendations
-//     );
-//   }
+    return reshapeProducts(
+      res.body.data.productRecommendations
+    );
+  }
   
   export async function getCart(
     cartId: string | undefined
