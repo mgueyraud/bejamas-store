@@ -46,6 +46,7 @@ export default async function ProductPage({
                 layout="responsive"
                 objectFit="cover"
                 alt={image.altText}
+                fetchPriority="high"
                 className="rounded-sm not-first:hidden md:not-first:block"
               />
             ))}
