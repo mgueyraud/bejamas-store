@@ -84,7 +84,7 @@ async function RelatedProducts({ id }: { id: string }) {
   return (
     <div className="py-8 mt-10">
       <h2 className="mb-4 text-2xl font-bold">Related Products</h2>
-      <ul className="grid grid-cols-2 w-full gap-4 overflow-x-auto pt-1 md:grid-cols-4">
+      <ul className="grid grid-cols-2 w-full gap-4 pt-1 md:grid-cols-4">
         {relatedProducts.map((product) => (
           <li key={product.handle}>
             <Product
