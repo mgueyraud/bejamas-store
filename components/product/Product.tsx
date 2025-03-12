@@ -24,7 +24,7 @@ export default function Product({ name, price, image, slug }: Props) {
           layout="responsive"
           objectFit="cover"
           alt={name}
-          className="rounded-sm"
+          className="rounded-sm w-full aspect-square"
         />
       </Link>
       <div className="flex justify-between font-bold text-xl mt-4">
