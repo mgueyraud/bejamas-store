@@ -7,6 +7,7 @@ import { useCart } from "./CartContext";
 import { addItem } from "./actions";
 import { useActionState } from "react";
 import { toast } from "sonner";
+import Button from "../Button";
 
 function SubmitButton({
   availableForSale,
@@ -17,47 +18,46 @@ function SubmitButton({
   selectedVariantId: string | undefined;
   isPending?: boolean;
 }) {
-  const buttonClasses =
-    "cursor-pointer bg-accent text-black font-bold px-6 h-12 rounded-full ml-auto md:ml-0 md:w-fit";
+  const buttonClasses = "ml-auto md:ml-0 md:w-fit";
   const disabledClasses = "cursor-not-allowed opacity-60 hover:opacity-60";
 
   if (!availableForSale) {
     return (
-      <button disabled className={clsx(buttonClasses, disabledClasses)}>
+      <Button disabled className={clsx(buttonClasses, disabledClasses)}>
         Out of Stock
-      </button>
+      </Button>
     );
   }
 
   if (isPending) {
     return (
-      <button disabled className={clsx(buttonClasses, disabledClasses)}>
+      <Button disabled className={clsx(buttonClasses, disabledClasses)}>
         Adding...
-      </button>
+      </Button>
     );
   }
 
   if (!selectedVariantId) {
     return (
-      <button
+      <Button
         aria-label="Please select an option"
         disabled
         className={clsx(buttonClasses, disabledClasses)}
       >
         Add to Cart
-      </button>
+      </Button>
     );
   }
 
   return (
-    <button
+    <Button
       aria-label="Add to cart"
       className={clsx(buttonClasses, {
         "hover:opacity-90": true,
       })}
     >
       Add To Cart
-    </button>
+    </Button>
   );
 }
 
@@ -92,6 +92,7 @@ export function AddToCart({ product }: { product: Product }) {
               : "",
         });
       }}
+      className="flex"
     >
       <SubmitButton
         availableForSale={availableForSale}
