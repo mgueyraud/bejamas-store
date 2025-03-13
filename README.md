@@ -1,36 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js & Shopify Store
 
-## Getting Started
+## Overview
+This e-commerce store was built using **Next.js** and **Shopify**, designed for scalability, performance, and a seamless user experience. It leverages Shopify as the backend for product management and checkout while utilizing Next.js for a fully customized frontend.
 
-First, run the development server:
+## Tech Stack
+- **Next.js** – For a fast, SEO-friendly, and server-side rendered frontend.
+- **Shopify Storefront API** – To fetch product data, collections, and checkout functionality.
+- **Tailwind CSS** – For a sleek and responsive UI.
+- **GraphQL** – For optimized data fetching from Shopify.
+- **Vercel** – For seamless deployment with edge caching.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Lighthouse score
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<img width="1422" alt="Screenshot 2025-03-12 at 20 13 54" src="https://github.com/user-attachments/assets/967991df-5b6f-47eb-9349-897741e9408c" />
+<img width="1422" alt="Screenshot 2025-03-12 at 20 14 20" src="https://github.com/user-attachments/assets/a67d7780-b99f-42c7-bec8-90793f05d9e3" />
+<img width="1414" alt="Screenshot 2025-03-12 at 20 18 28" src="https://github.com/user-attachments/assets/01deddd6-b90f-4110-96ee-dcea8c9b2b32" />
